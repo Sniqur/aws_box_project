@@ -21,3 +21,5 @@ jobs:
     - name: Run Latest Docker Container
       run: sudo docker run -d -p 8080:8080 --name cicd-pipeline-container steeve05/cicd-pipeline
    
+
+   
