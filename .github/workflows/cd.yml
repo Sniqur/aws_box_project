@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Pull Docker image DockerHub
-      run: sudo ocker pull steeve05/cicd-pipeline:latest
+      run: sudo docker pull steeve05/cicd-pipeline:latest
    
     - name: Delete old docker container
       run: sudo docker rm -f cicd-pipeline-container || true
