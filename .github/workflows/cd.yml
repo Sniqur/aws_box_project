@@ -5,8 +5,8 @@ on:
     workflows: ["CI Pipeline"]
     types: 
       - completed
-jobs:
 
+jobs:
   build:
 
     runs-on: self-hosted
@@ -22,4 +22,4 @@ jobs:
       run: sudo docker run -d -p 8080:8080 --name cicd-pipeline-container steeve05/cicd-pipeline
    
 
-   
+s
