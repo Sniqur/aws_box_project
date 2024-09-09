@@ -2,7 +2,7 @@
 FROM httpd:alpine
 
 # Copy your HTML and CSS files into the Apache web directory
-COPY . /usr/local/apache2/htdocs/
+COPY . /var/www/html/
 
 # Expose port 80 to access the website
 EXPOSE 80
