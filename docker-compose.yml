@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - .:/usr/share/nginx/html
+      - . /usr/share/nginx/html
 
   node-exporter:
     image: prom/node-exporter:latest
