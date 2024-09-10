@@ -3,10 +3,10 @@ version: '3.8'
 services:
   nginx:
     image: nginx:latest
-    ports:
-      - "80:80"
     volumes:
       - ./:/usr/share/nginx/html/
+    ports:
+      - "80:80"
 
   node-exporter:
     image: prom/node-exporter:latest
