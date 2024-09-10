@@ -24,7 +24,7 @@ jobs:
 
 
     - name: Build the Docker image
-      run: sudo docker-compose build -t cicd-pipeline .
+      run: sudo docker-compose build -t cicd-pipeline:latest .
     
     # - name: Give a tag to image
     #   run: sudo docker-compose tag cicd-pipeline steeve05/cicd-pipeline
