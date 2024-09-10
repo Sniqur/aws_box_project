@@ -30,5 +30,5 @@ jobs:
     #   run: sudo docker-compose tag cicd-pipeline steeve05/cicd-pipeline
     
     - name: Push to DockerHub
-      run: sudo docker-compose push steeve05/cicd-pipeline:latest
+      run: sudo docker-compose push steeve05/cicd-pipeline
 
