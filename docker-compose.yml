@@ -8,12 +8,12 @@ services:
     image: steeve05/cicd-pipeline:latest
     ports: 
        - "8080:8080"
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./:/usr/share/nginx/html/
-    ports:
-      - "80:80"
+  # nginx:
+  #   image: nginx:latest
+  #   volumes:
+  #     - ./:/usr/share/nginx/html/
+  #   ports:
+  #     - "80:80"
 
   node-exporter:
     image: prom/node-exporter:latest
