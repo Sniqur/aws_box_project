@@ -5,8 +5,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-      image: steeve05/cicd-pipeline:latest
-      ports: 
+    image: steeve05/cicd-pipeline:latest
+    ports: 
        - "8080:8080"
   nginx:
     image: nginx:latest
