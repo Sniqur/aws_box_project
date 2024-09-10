@@ -19,12 +19,16 @@ jobs:
     
       run: sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     
+    - name: Install Docker Compose
+      run: sudo apt-get update && sudo apt-get install -y docker-compose
+
+
     - name: Build the Docker image
-      run: sudo docker build -t cicd-pipeline .
+      run: sudo docker-compose build -t cicd-pipeline .
     
     - name: Give a tag to image
-      run: sudo docker tag cicd-pipeline steeve05/cicd-pipeline
+      run: sudo docker-compose tag cicd-pipeline steeve05/cicd-pipeline
     
     - name: Push to DockerHub
-      run: sudo docker push steeve05/cicd-pipeline:latest
+      run: sudo docker-compose push steeve05/cicd-pipeline:latest
 
