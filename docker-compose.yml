@@ -1,4 +1,4 @@
-version: '3.8'
+version: 
 
 services:
   backend:
@@ -19,7 +19,7 @@ services:
     image: prom/node-exporter:latest
     ports:
       - "9100:9100"
-      
+
     network_mode: host
     pid: host
     command:
