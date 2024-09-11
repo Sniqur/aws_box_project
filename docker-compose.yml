@@ -1,45 +1,48 @@
-version: 
+version: '3.8'
 
 services:
   backend:
     build:
-      context: ./
-      dockerfile: Dockerfile
-    image: steeve05/cicd-pipeline:latest
-    ports: 
-       - "8080:8080"
-  # nginx:
-  #   image: nginx:latest
-  #   volumes:
-  #     - ./:/usr/share/nginx/html/
-  #   ports:
-  #     - "80:80"
+        context: ./
+        dockerfile: Dockerfile
+        image: steeve05/cicd-pipeline:latest
+        ports: 
+        - "8080:8080"
+    # nginx:
+    #   image: nginx:latest
+    #   volumes:
+    #     - ./:/usr/share/nginx/html/
+    #   ports:
+    #     - "80:80"
 
-  node-exporter:
-    image: prom/node-exporter:latest
-    ports:
-      - "9100:9100"
+    node-exporter:
+      build:
+        image: prom/node-exporter:latest
+        ports:
+          - "9100:9100"
+          
+        network_mode: host
+        pid: host
+        command:
+          - '--path.rootfs=/host'
+        volumes:
+          - /proc:/host/proc:ro
+          - /sys:/host/sys:ro
+          - /:/host:ro,rslave
 
-    network_mode: host
-    pid: host
-    command:
-       - '--path.rootfs=/host'
-    volumes:
-       - /proc:/host/proc:ro
-       - /sys:/host/sys:ro
-       - /:/host:ro,rslave
+    prometheus:
+      build:
+          image: prom/prometheus:latest
+          volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml
+          ports:
+            - "9090:9090"
 
-  prometheus:
-    image: prom/prometheus:latest
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
-
-  grafana:
-    image: grafana/grafana:latest
-    ports:
-      - "3000:3000"
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin # замініть на свій пароль
+    grafana:
+      build:    
+        image: grafana/grafana:latest
+        ports:
+          - "3000:3000"
+        environment:
+          - GF_SECURITY_ADMIN_PASSWORD=admin # замініть на свій пароль
 
