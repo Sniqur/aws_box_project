@@ -15,7 +15,7 @@ services:
     #   ports:
     #     - "80:80"
 
-    node-exporter:
+  node-exporter:
       build:
         image: prom/node-exporter:latest
         ports:
@@ -30,7 +30,7 @@ services:
           - /sys:/host/sys:ro
           - /:/host:ro,rslave
 
-    prometheus:
+  prometheus:
       build:
           image: prom/prometheus:latest
           volumes:
@@ -38,7 +38,7 @@ services:
           ports:
             - "9090:9090"
 
-    grafana:
+  grafana:
       build:    
         image: grafana/grafana:latest
         ports:
